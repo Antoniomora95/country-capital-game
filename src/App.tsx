@@ -29,14 +29,15 @@ const getAllGameItems = (data: Record<string, string>): GameItem[] => (
   }).sort(() => Math.random() - 0.5)
 );
 
+
+const getIsSameCountry = (someItem: GameItem, anotherItem: GameItem) => someItem.countryId === anotherItem?.countryId;
+
+const getIsSameName = (someItem: GameItem, anotherItem: GameItem) => someItem.name === anotherItem?.name;
+
+const isDefaultOrErrorState = (selectedItems: GameItem[]): boolean => selectedItems.length === 0 || selectedItems.length === 2;
+
 function CountryCapitalGame({ data }: CountryCapitalGameProps) {
-  const [gameItems, setGameItems] = useState(() => getAllGameItems(data))
-
-  const getIsSameCountry = (someItem: GameItem, anotherItem: GameItem) => someItem.countryId === anotherItem?.countryId;
-
-  const getIsSameName = (someItem: GameItem, anotherItem: GameItem) => someItem.name === anotherItem?.name;
-
-  const isDefaultOrErrorState = (selectedItems: GameItem[]): boolean => selectedItems.length === 0 || selectedItems.length === 2;
+  const [gameItems, setGameItems] = useState(() => getAllGameItems(data));
 
   const onButtonClick = (gameItem: GameItem) => () => {
 
