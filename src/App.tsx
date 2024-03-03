@@ -59,7 +59,6 @@ function CountryCapitalGame({ data }: CountryCapitalGameProps) {
       ));
     } else if (getIsSameCountry(gameItem, previouslySelected)) {
       setGameItems((prevItems) => prevItems.filter(item => !getIsSameCountry(item, gameItem)));
-      return;
     }
     else {
       setGameItems((prevItems) => {
